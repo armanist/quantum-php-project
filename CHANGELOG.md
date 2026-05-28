@@ -7,7 +7,7 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 ## [3.0.0] - 2026-05-28
 
 ### Changed
-- Upgraded downstream framework dependency from `quantum/framework` `3.0.0-rc.1` to stable `3.0.0`.
+- Upgraded downstream framework dependency from `quantum/framework` `dev-master` to stable `3.0.0`.
 - Updated `.env.example` default `APP_VERSION` from `2.9.9` to `3.0.0`.
 
 ### Notes
