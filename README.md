@@ -10,17 +10,17 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/softberg/quantum-php-core/actions/workflows/php.yml" >   
-        <img src="https://github.com/softberg/quantum-php-core/actions/workflows/php.yml/badge.svg">
+    <a href="https://github.com/quantum-php/framework/actions/workflows/php.yml" >
+        <img src="https://github.com/quantum-php/framework/actions/workflows/php.yml/badge.svg">
     </a>
-    <a href="https://codecov.io/gh/softberg/quantum-php-core" >
-        <img src="https://codecov.io/gh/softberg/quantum-php-core/branch/master/graph/badge.svg"/>
+    <a href="https://codecov.io/gh/quantum-php/framework" >
+        <img src="https://codecov.io/gh/quantum-php/framework/branch/master/graph/badge.svg"/>
     </a>
-    <a href="https://scrutinizer-ci.com/g/softberg/quantum-php-core">
-        <img src="https://scrutinizer-ci.com/g/softberg/quantum-php-core/badges/quality-score.png?b=master"/>
+    <a href="https://scrutinizer-ci.com/g/quantum-php/framework">
+        <img src="https://scrutinizer-ci.com/g/quantum-php/framework/badges/quality-score.png?b=master"/>
     </a>
-    <a href="https://github.com/softberg/quantum-php-core/blob/master/LICENSE">
-        <img src="https://img.shields.io/github/license/softberg/quantum-php-core"/>
+    <a href="https://github.com/quantum-php/framework/blob/master/LICENSE">
+        <img src="https://img.shields.io/github/license/quantum-php/framework"/>
     </a>
     <a href="https://packagist.org/packages/quantum/framework">
         <img src="https://img.shields.io/packagist/v/quantum/framework"/>
