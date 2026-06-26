@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog and this project adheres to Semantic Versioning.
 
+## [Unreleased]
+
+### Changed
+- Raised the project runtime baseline to PHP 8.0 and updated CI to exercise PHP 8.0, 8.1, and 8.2.
+- Bumped the PHPStan parser baseline to PHP 8.0.
+
 ## [3.0.0] - 2026-05-28
 
 ### Changed

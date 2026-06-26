@@ -475,7 +475,7 @@ class DemoCommand extends CliCommand
         $command = ['php', 'qt', $commandName];
 
         foreach ($arguments as $key => $value) {
-            if (!is_int($key) && substr($key, 0, 2) !== '--') {
+            if (!is_int($key) && !str_starts_with($key, '--')) {
                 $command[] = (string) $value;
                 continue;
             }

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Rector\TypeDeclaration\Rector\StmtsAwareInterface\DeclareStrictTypesRector;
+use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Config\RectorConfig;
@@ -18,6 +19,7 @@ return RectorConfig::configure()
     ])
     ->withSkip([
         __DIR__ . '/modules',
+        ClassPropertyAssignToConstructorPromotionRector::class,
     ])
     ->withSets([
         LevelSetList::UP_TO_PHP_80,

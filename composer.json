@@ -5,7 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.0",
         "quantum/framework": "^3.0.0",
         "fakerphp/faker": "^1.15",
         "bluemmb/faker-picsum-photos-provider": "^2.0",
