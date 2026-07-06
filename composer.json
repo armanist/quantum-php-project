@@ -30,7 +30,8 @@
         "fakerphp/faker": "^1.15",
         "bluemmb/faker-picsum-photos-provider": "^2.0",
         "ottaviano/faker-gravatar": "^0.3.0",
-        "symfony/process": "^5.4"
+        "symfony/process": "^5.4",
+        "symfony/yaml": "^5.4.52"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.0",
@@ -65,10 +66,5 @@
         "rector:fix": "vendor/bin/rector process",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=-1 --error-format=github",
         "test": "vendor/bin/phpunit --stderr --coverage-clover coverage.xml"
-    },
-    "config": {
-        "audit": {
-            "block-insecure": false
-        }
     }
 }
