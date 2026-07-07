@@ -22,6 +22,8 @@ class PostServiceTest extends TestCase
 
     protected $postService;
 
+    protected $fileMeta;
+
     public function setUp(): void
     {
         parent::setUp();

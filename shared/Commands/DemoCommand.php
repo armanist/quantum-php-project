@@ -4,14 +4,8 @@ declare(strict_types=1);
 
 /**
  * Quantum PHP Framework
- *
- * An open source software development framework for PHP
- *
- * @package Quantum
- * @author Arman Ag. <arman.ag@softberg.org>
- * @copyright Copyright (c) 2018 Softberg LLC (https://softberg.org)
- * @link http://quantum.softberg.org/
- * @since 3.0.0
+ * An open-source software development framework for PHP
+ * @link https://quantumphp.io
  */
 
 namespace Shared\Commands;
@@ -475,7 +469,7 @@ class DemoCommand extends CliCommand
         $command = ['php', 'qt', $commandName];
 
         foreach ($arguments as $key => $value) {
-            if (!is_int($key) && substr($key, 0, 2) !== '--') {
+            if (!is_int($key) && !str_starts_with($key, '--')) {
                 $command[] = (string) $value;
                 continue;
             }

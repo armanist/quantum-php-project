@@ -32,6 +32,8 @@
 
 <h2>Installation</h2>
 
+<p><strong>Requirements:</strong> PHP 8.0 or newer.</p>
+
 <h3> 1. Create new project </h3>
 
 ```bash
