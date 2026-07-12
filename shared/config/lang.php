@@ -6,7 +6,7 @@ return [
      * Language configurations
      * ---------------------------------------------------------
      */
-    'default' => 'deepl',
+    'default' => 'file',
     'supported' => ['en', 'es'],
     'default_locale' => 'en',
     'url_segment' => 1,
@@ -14,7 +14,6 @@ return [
     'deepl' => [
         'use_source_catalog' => true,
         'auth_key' => '',
-        'api_url' => '',
         'source_locale' => 'en',
         'cache' => [
             'enabled' => true,

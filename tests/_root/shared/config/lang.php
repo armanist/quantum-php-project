@@ -6,8 +6,8 @@ return [
      * Multilingual settings
      * ---------------------------------------------------------
      */
-    'supported' => ['en', 'ru', 'am'],
     'default' => 'file',
+    'supported' => ['en', 'ru', 'am'],
     'default_locale' => 'en',
     'file' => [],
     'url_segment' => 1,
