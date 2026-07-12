@@ -6,7 +6,7 @@ use Quantum\HttpClient\HttpClient;
 function url_with_lang(string $lang): string
 {
     if (!in_array($lang, (array) config()->get('lang.supported'))) {
-        $lang = config()->get('lang.default');
+        $lang = config()->get('lang.default_locale');
     }
 
     if (trim(route_uri()) == '/') {
