@@ -11,7 +11,6 @@ use Quantum\Storage\Factories\FileSystemFactory;
 use Quantum\Config\Exceptions\ConfigException;
 use Quantum\App\Exceptions\BaseException;
 use Quantum\Di\Exceptions\DiException;
-use Quantum\HttpClient\HttpClient;
 
 /**
  * Gets the url with the selected language
@@ -74,13 +73,15 @@ function save_remote_image(string $imageUrl, string $userDirectory, string $imag
 
     $imageName = slugify($imageName) . '.jpg';
 
-    $httpClient = new HttpClient();
-    $httpClient->createRequest($imageUrl);
-    $httpClient->setMethod('GET');
-    $httpClient->setOpt(CURLOPT_FOLLOWLOCATION, true);
-    $httpClient->start();
+    $httpClient = httpRequest($imageUrl)
+        ->setMethod('GET')
+        ->setOpt(CURLOPT_FOLLOWLOCATION, true)
+        ->start();
 
-    $fs->put(uploads_dir() . DS . $userDirectory . DS . $imageName, $httpClient->getResponseBody());
+    $fs->put(
+        uploads_dir() . DS . $userDirectory . DS . $imageName,
+        $httpClient->getResponseBody()
+    );
 
     return $imageName;
 }
