@@ -6,7 +6,9 @@
  * @link https://quantumphp.io
  */
 
+use Quantum\HttpClient\Contracts\CurlAdapterInterface;
 use Quantum\HttpClient\Exceptions\HttpClientException;
+use Quantum\HttpClient\Adapters\MultiCurlAdapter;
 use Quantum\Storage\Factories\FileSystemFactory;
 use Quantum\Config\Exceptions\ConfigException;
 use Quantum\App\Exceptions\BaseException;
@@ -84,6 +86,62 @@ function save_remote_image(string $imageUrl, string $userDirectory, string $imag
     );
 
     return $imageName;
+}
+
+/**
+ * Saves remote images
+ * @param array<int, array{url: string, directory: string, name: string}> $images
+ * @return array<int, string>
+ * @throws ReflectionException
+ * @throws BaseException
+ * @throws ConfigException
+ * @throws DiException
+ */
+function save_remote_images(array $images): array
+{
+    if ($images === []) {
+        return [];
+    }
+
+    $fs = FileSystemFactory::get();
+    $multiCurl = (new MultiCurlAdapter())
+        ->setOpt(CURLOPT_FOLLOWLOCATION, true);
+    $jobs = [];
+    $imageNames = [];
+
+    foreach ($images as $index => $image) {
+        /** @var CurlAdapterInterface $request */
+        $request = $multiCurl->addGet($image['url']);
+        $imageNames[$index] = slugify($image['name']) . '.jpg';
+        $jobs[$request->getId()] = [
+            'directory' => $image['directory'],
+            'name' => $imageNames[$index],
+        ];
+    }
+
+    $multiCurl->complete(function (CurlAdapterInterface $request) use ($fs, $jobs): void {
+        if (!isset($jobs[$request->getId()])) {
+            return;
+        }
+
+        if ($request->isError()) {
+            throw new RuntimeException(
+                $request->getErrorMessage() ?? 'Unable to download remote image',
+                $request->getErrorCode()
+            );
+        }
+
+        $job = $jobs[$request->getId()];
+
+        $fs->put(
+            uploads_dir() . DS . $job['directory'] . DS . $job['name'],
+            $request->getResponse()
+        );
+    });
+
+    $multiCurl->start();
+
+    return $imageNames;
 }
 
 /**
