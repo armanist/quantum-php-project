@@ -241,11 +241,22 @@ class DemoCommand extends CliCommand
     private function generateUsers(): array
     {
         $users = [];
+        $images = [];
+
         for ($i = 0; $i < self::COUNTS['users']; $i++) {
-            $user = $this->generateUserData();
-            $this->runCommandInternally(self::COMMANDS['user_create'], $user);
-            $users[] = $user;
+            $generated = $this->generateUserData();
+            $users[] = $generated['data'];
+            $images[] = $generated['image'];
         }
+
+        $imageNames = save_remote_images($images);
+
+        foreach ($users as $index => $user) {
+            $user['image'] = $imageNames[$index];
+            $this->runCommandInternally(self::COMMANDS['user_create'], $user);
+            $users[$index] = $user;
+        }
+
         return $users;
     }
 
@@ -262,13 +273,22 @@ class DemoCommand extends CliCommand
     private function generatePosts(array $users): array
     {
         $posts = [];
+        $images = [];
 
         foreach ($users as $user) {
             for ($i = 0; $i < self::COUNTS['posts_per_user']; $i++) {
-                $post = $this->generatePostData($user);
-                $this->runCommandInternally(self::COMMANDS['post_create'], $post);
-                $posts[] = $post;
+                $generated = $this->generatePostData($user);
+                $posts[] = $generated['data'];
+                $images[] = $generated['image'];
             }
+        }
+
+        $imageNames = save_remote_images($images);
+
+        foreach ($posts as $index => $post) {
+            $post['image'] = $imageNames[$index];
+            $this->runCommandInternally(self::COMMANDS['post_create'], $post);
+            $posts[$index] = $post;
         }
 
         return $posts;
@@ -309,20 +329,21 @@ class DemoCommand extends CliCommand
 
         create_user_directory($userUuid);
 
-        $imageName = save_remote_image(
-            $this->faker->gravatarUrl(),
-            $userUuid,
-            $email
-        );
-
         return [
-            'email' => $email,
-            'password' => self::DEFAULT_PASSWORD,
-            'firstname' => $this->faker->name(),
-            'lastname' => $this->faker->lastName(),
-            'uuid' => $userUuid,
-            'role' => Role::EDITOR,
-            'image' => $imageName,
+            'data' => [
+                'email' => $email,
+                'password' => self::DEFAULT_PASSWORD,
+                'firstname' => $this->faker->name(),
+                'lastname' => $this->faker->lastName(),
+                'uuid' => $userUuid,
+                'role' => Role::EDITOR,
+                'image' => '',
+            ],
+            'image' => [
+                'url' => $this->faker->gravatarUrl(),
+                'directory' => $userUuid,
+                'name' => $email,
+            ],
         ];
     }
 
@@ -340,18 +361,19 @@ class DemoCommand extends CliCommand
         $postUuid = $this->faker->uuid();
         $title = textCleanUp($this->faker->realText(50));
 
-        $imageName = save_remote_image(
-            $this->faker->imageUrl(640, 480, true, 0),
-            $user['uuid'],
-            $title
-        );
-
         return [
-            'title' => $title,
-            'description' => textCleanUp($this->faker->realText(1000)),
-            'user_uuid' => $user['uuid'],
-            'uuid' => $postUuid,
-            'image' => $imageName,
+            'data' => [
+                'title' => $title,
+                'description' => textCleanUp($this->faker->realText(1000)),
+                'user_uuid' => $user['uuid'],
+                'uuid' => $postUuid,
+                'image' => '',
+            ],
+            'image' => [
+                'url' => $this->faker->imageUrl(640, 480, true, 0),
+                'directory' => $user['uuid'],
+                'name' => $title,
+            ],
         ];
     }
 
