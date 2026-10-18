@@ -11,6 +11,8 @@ debug.log
 /shared/store/*
 /shared/emails/*
 /shared/config/auth.php
+/cache/*
+!/cache/.gitkeep
 
 # Generated modules
 /modules
