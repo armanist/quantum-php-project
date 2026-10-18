@@ -11,8 +11,6 @@ use Rector\Config\RectorConfig;
 return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/helpers',
-        __DIR__ . '/hooks',
-        __DIR__ . '/libraries',
         __DIR__ . '/migrations',
         __DIR__ . '/public/index.php',
         __DIR__ . '/shared',

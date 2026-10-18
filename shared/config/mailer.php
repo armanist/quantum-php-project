@@ -36,4 +36,8 @@ return [
     'mandrill' => [
         'api_key' => env('MANDRILL_APIKEY', null),
     ],
+
+    'resend' => [
+        'api_key' => env('RESEND_APIKEY', null),
+    ],
 ];

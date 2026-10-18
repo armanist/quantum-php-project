@@ -4,8 +4,6 @@ parameters:
     paths:
         - shared
         - helpers
-        - hooks
-        - libraries
         - migrations
         - public/index.php
     excludePaths:
