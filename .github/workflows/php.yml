@@ -56,3 +56,24 @@ jobs:
 
     - name: Run tests
       run: composer test
+
+    - name: Generate the demo API module
+      run: php qt module:generate Api --template=DemoApi --yes
+
+    - name: Smoke test the API
+      run: |
+        php qt serve --host=127.0.0.1 --port=8000 > server.log 2>&1 &
+        for i in $(seq 1 20); do
+          curl -s -o /dev/null http://127.0.0.1:8000/ && break
+          sleep 1
+        done
+        status=$(curl -s -o response.json -w '%{http_code}' http://127.0.0.1:8000/api/posts)
+        echo "GET /api/posts returned $status"
+        cat response.json
+        echo
+        if [ "$status" != "200" ]; then
+          echo "Expected 200. Server log:"
+          cat server.log
+          exit 1
+        fi
+        grep -q '"status":"success"' response.json
