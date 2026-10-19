@@ -15,6 +15,7 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 ### Changed
 - `shared/config/lang.php` uses the 3.1 Lang format: `default` adapter (`file`, `deepl` or `google_translate`), `default_locale` and a section per remote adapter.
 - `save_remote_image()` uses the fluent `httpRequest()` helper.
+- CI runs `composer rector:check` after PHPStan.
 
 ### Removed
 - The `Hook`, `Loader` and `libraries/` leftovers: the `hooks/` and `libraries/` folders, `shared/config/hooks.php` and the hooks and loader entries in the dependencies config.
