@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog and this project adheres to Semantic Versioning.
 
+## [3.1.0] - TBD
+
+### Added
+- A `cache/` folder for runtime cache files such as the file rate limiter's data. Its contents are git-ignored, so a fresh install no longer fails the first rate-limited request.
+- The `resend` mailer entry in `shared/config/mailer.php` and `RESEND_APIKEY` in `.env.example`.
+- A `save_remote_images()` helper that downloads the demo images in parallel; `php qt demo` uses it.
+- An API smoke test in CI.
+
+### Changed
+- `shared/config/lang.php` uses the 3.1 Lang format: `default` adapter (`file`, `deepl` or `google_translate`), `default_locale` and a section per remote adapter.
+- `save_remote_image()` uses the fluent `httpRequest()` helper.
+
+### Removed
+- The `Hook`, `Loader` and `libraries/` leftovers: the `hooks/` and `libraries/` folders, `shared/config/hooks.php` and the hooks and loader entries in the dependencies config.
+- The unused Travis CI configuration (`.travis.yml`).
+
 ## [3.0.3] - 2026-07-10
 
 ### Changed
