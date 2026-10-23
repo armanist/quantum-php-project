@@ -21,17 +21,17 @@ class CommentDTO
     /**
      * @var string
      */
-    private string $postUuid;
+    private readonly string $postUuid;
 
     /**
      * @var string
      */
-    private string $userUuid;
+    private readonly string $userUuid;
 
     /**
      * @var string
      */
-    private string $content;
+    private readonly string $content;
 
     /**
      * @param string $postUuid

@@ -223,7 +223,7 @@ class DemoCommand extends CliCommand
             ]);
         } catch (ProcessFailedException $e) {
             throw new RuntimeException(
-                trim($e->getProcess()->getOutput()) ?: $e->getMessage()
+                trim((string) $e->getProcess()->getOutput()) ?: $e->getMessage()
             );
         }
     }

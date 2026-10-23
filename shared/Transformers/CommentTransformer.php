@@ -28,7 +28,7 @@ class CommentTransformer implements TransformerInterface
                 'image' => $item->image,
             ],
             'content' => $item->content,
-            'date' => date('Y-m-d H:i', strtotime($item->created_at)),
+            'date' => date('Y-m-d H:i', strtotime((string) $item->created_at)),
         ];
     }
 }

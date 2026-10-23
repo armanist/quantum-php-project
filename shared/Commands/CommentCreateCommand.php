@@ -75,7 +75,7 @@ class CommentCreateCommand extends CliCommand
         $commentDto = new CommentDTO(
             $this->getArgument('post_uuid'),
             $this->getArgument('user_uuid'),
-            trim($this->getArgument('content'))
+            trim((string) $this->getArgument('content'))
         );
 
         service(CommentService::class)->addComment($commentDto);

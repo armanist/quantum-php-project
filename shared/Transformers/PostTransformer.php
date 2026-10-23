@@ -30,7 +30,7 @@ class PostTransformer implements TransformerInterface
             'title' => $item->title,
             'content' => markdown_to_html($item->content, true),
             'image' => $this->buildImagePath($item),
-            'date' => date('Y/m/d H:i', strtotime($item->updated_at)),
+            'date' => date('Y/m/d H:i', strtotime((string) $item->updated_at)),
             'author' => $item->firstname . ' ' . $item->lastname,
         ];
     }

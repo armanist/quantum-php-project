@@ -43,7 +43,7 @@ class PostService extends Service
     /**
      * @var PostTransformer
      */
-    private PostTransformer $transformer;
+    private readonly PostTransformer $transformer;
 
     /**
      * @param PostTransformer $transformer

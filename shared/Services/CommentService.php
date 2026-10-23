@@ -29,7 +29,7 @@ class CommentService extends Service
      * @var Comment
      */
     private $model;
-    private CommentTransformer $transformer;
+    private readonly CommentTransformer $transformer;
 
     /**
      * @param CommentTransformer $transformer

@@ -21,27 +21,27 @@ class PostDTO
     /**
      * @var string
      */
-    private string $title;
+    private readonly string $title;
 
     /**
      * @var string
      */
-    private string $content;
+    private readonly string $content;
 
     /**
      * @var string|null
      */
-    private ?string $userUuid;
+    private readonly ?string $userUuid;
 
     /**
      * @var string|null
      */
-    private ?string $image;
+    private readonly ?string $image;
 
     /**
      * @var string|null
      */
-    private ?string $uuid;
+    private readonly ?string $uuid;
 
     /**
      * @param string $title
