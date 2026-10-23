@@ -11,6 +11,7 @@ The format is based on Keep a Changelog and this project adheres to Semantic Ver
 - The `resend` mailer entry in `shared/config/mailer.php` and `RESEND_APIKEY` in `.env.example`.
 - A `save_remote_images()` helper that downloads the demo images in parallel; `php qt demo` uses it.
 - An API smoke test in CI.
+- `logging.message.limit` and `mailer.transport_log_limit` in the config: the number of log messages and transport log lines kept in memory, both `1000` by default (framework #593).
 
 ### Changed
 - `shared/config/lang.php` uses the 3.1 Lang format: `default` adapter (`file`, `deepl` or `google_translate`), `default_locale` and a section per remote adapter.
