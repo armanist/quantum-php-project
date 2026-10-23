@@ -30,7 +30,7 @@ class AuthService extends Service implements AuthServiceInterface
     /**
      * @var User
      */
-    private User $model;
+    private readonly User $model;
 
     /**
      * @throws BaseException

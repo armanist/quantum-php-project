@@ -21,37 +21,37 @@ class UserDTO
     /**
      * @var string
      */
-    private string $email;
+    private readonly string $email;
 
     /**
      * @var string
      */
-    private string $password;
+    private readonly string $password;
 
     /**
      * @var string
      */
-    private string $firstname;
+    private readonly string $firstname;
 
     /**
      * @var string
      */
-    private string $lastname;
+    private readonly string $lastname;
 
     /**
      * @var string
      */
-    private string $role;
+    private readonly string $role;
 
     /**
      * @var string|null
      */
-    private ?string $uuid;
+    private readonly ?string $uuid;
 
     /**
      * @var string
      */
-    private string $image;
+    private readonly string $image;
 
     /**
      * @param string $email
