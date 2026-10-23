@@ -12,6 +12,12 @@ return [
 
     'mail_trap' => true,
 
+    /**
+     * The number of transport log lines the mailer keeps: the SMTP exchange in debug mode
+     * and the errors of failed sends. 0 keeps every line.
+     */
+    'transport_log_limit' => 1000,
+
     'smtp' => [
         'host' => env('MAIL_HOST'),
         'secure' => env('MAIL_SMTP_SECURE'),
